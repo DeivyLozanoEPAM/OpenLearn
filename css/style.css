@@ -278,7 +278,7 @@ section.destacados {
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .search-box {
