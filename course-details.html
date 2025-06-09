@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalles del Curso - OpenLearn</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav>
+    <div class="logo">OpenLearn</div>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="#">Acerca de</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main class="curso-detalle-container">
+    <div id="curso-detalle" class="detalle-contenido">
+      <!-- Contenido dinámico -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 OpenLearn. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+
+    const contenedor = document.getElementById("curso-detalle");
+    const curso = cursos.find(c => c.id === id);
+
+    if (curso) {
+      contenedor.innerHTML = `
+        <h1 class="detalle-titulo">${curso.titulo}</h1>
+        <img src="${curso.imagen}" alt="${curso.titulo}" class="detalle-imagen" />
+        <p class="detalle-categoria"><strong>Categoría:</strong> ${curso.categoria}</p>
+        <p class="detalle-descripcion">${curso.descripcion}</p>
+        <a href="${curso.enlace}" target="_blank" class="detalle-enlace">Ir al curso</a>
+      `;
+    } else {
+      contenedor.innerHTML = "<p class='detalle-error'>Curso no encontrado.</p>";
+    }
+  </script>
+</body>
+</html>
